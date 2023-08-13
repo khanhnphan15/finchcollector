@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>All Finches</h2>
+    <ul class="list-group">
+      {% for finch in finches %}
+        <li class="list-group-item">
+          <strong>Name:</strong> {{ finch.name }}<br>
+          <strong>Color:</strong> {{ finch.color }}<br>
+          <strong>Size:</strong> {{ finch.size }}<br>
+          <strong>Species:</strong> {{ finch.species }}<br>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
