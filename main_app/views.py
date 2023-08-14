@@ -1,4 +1,6 @@
 from django.shortcuts import render
+# Add UpdateView & DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Finch  # Import the Finch model
 
 # Create your views here.
@@ -32,5 +34,22 @@ def finches_detail(request, finch_id):
         'finch': finch
     })
 
+class FinchCreate(CreateView):
+  model = Finch
+  fields = '__all__' 
+#   or fields = ['name', 'color', 'breed', 'description', 'age']
+ # Special string pattern Django will use
+  success_url = '/finches/{finch_id}'
+  # Or if you wanted to redirect to the index page
+  # success_url = '/cats'
+
+class FinchUpdate(UpdateView):
+  model = Finch
+  # Let's disallow the renaming of a cat by excluding the name field!
+  fields = ['breed', 'color', 'description', 'age']
+
+class FinchDelete(DeleteView):
+  model = Finch
+  success_url = '/finches'
 
 
