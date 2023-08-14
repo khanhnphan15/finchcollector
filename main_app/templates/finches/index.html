@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <div class="container">
-    <h2>All Finches</h2>
-    <ul class="list-group">
-      {% for finch in finches %}
-        <li class="list-group-item">
-          <strong>Name:</strong> {{ finch.name }}<br>
-          <strong>Color:</strong> {{ finch.color }}<br>
-          <strong>Size:</strong> {{ finch.size }}<br>
-          <strong>Species:</strong> {{ finch.species }}<br>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+
+<h1>Finch List</h1>
+
+{% for finch in finches %}
+  <a href="{% url 'detail' finch.id %}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ finch.name }}</span>
+        <p>Color: {{ finch.color }}</p>
+        <p>Breed: {{ finch.breed }}</p>
+        <p>Description: {{ finch.description|linebreaks }}</p>
+        {% if finch.age > 0 %}
+          <p>Age: {{ finch.age }}</p>
+        {% else %}
+          <p>Age: Chick</p>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+{% endfor %}
+
 {% endblock %}

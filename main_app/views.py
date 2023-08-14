@@ -1,13 +1,5 @@
 from django.shortcuts import render
-
-# Simulate finch data
-finches = [
-    {'name': 'Zebra Finch', 'color': 'Black and White', 'size': 'Small'},
-    {'name': 'Gouldian Finch', 'color': 'Brightly Colored', 'size': 'Small'},
-    {'name': 'Crimson Finch', 'color': 'Red', 'size': 'Small'},
-    {'name': 'Society Finch', 'color': 'Various Colors', 'size': 'Small'},
-    {'name': 'Lady Gouldian Finch', 'color': 'Brightly Colored', 'size': 'Small'},
-]
+from .models import Finch  # Import the Finch model
 
 # Create your views here.
 def home(request):
@@ -19,8 +11,26 @@ def about(request):
     }
     return render(request, 'about.html', context)
 
-def all_finches(request):
-    context = {
-        'finches': finches,
-    }
-    return render(request, 'finches/index.html', context)
+# def all_finches(request):
+#     finches = Finch.objects.all()
+#     context = {
+#         'finches': finches,
+#     }
+#     return render(request, 'finches/index.html', context)
+
+def finches_index(request):
+    finches = Finch.objects.all()
+    for i in finches:
+        a = 'a'
+    return render(request, 'finches/index.html', {
+        'finches': finches
+    })
+
+def finches_detail(request, finch_id):
+    finch = Finch.objects.get(id=finch_id)
+    return render(request, 'finches/detail.html', {
+        'finch': finch
+    })
+
+
+
