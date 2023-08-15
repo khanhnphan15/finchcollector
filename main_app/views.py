@@ -53,7 +53,7 @@ class FinchCreate(CreateView):
 
 class FinchUpdate(UpdateView):
     model = Finch
-    # Let's disallow the renaming of a cat by excluding the name field!
+    # Let's disallow the renaming of a finch by excluding the name field!
     fields = ["breed", "color", "description", "age"]
 
 
@@ -104,4 +104,4 @@ def assoc_toy(request, finch_id, toy_id):
 def unassoc_toy(request, finch_id, toy_id):
     # Note that you can pass a toy's id instead of the whole toy object
     Finch.objects.get(id=finch_id).toys.remove(toy_id)
-    return redirect("detail", cat_id=finch_id)
+    return redirect("detail", finch_id=finch_id)
