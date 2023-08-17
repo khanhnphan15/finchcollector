@@ -2,7 +2,7 @@
 
 {% block content %}
   {% if object %}
-    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+    <h1>Edit <span class="#e8eaf6 indigo lighten-5">{{object.name}}</span></h1>
   {% else %}
     <h1>Add Toy</h1>
   {% endif %}
@@ -14,6 +14,6 @@
       <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!" class="btn">
+    <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo lighten-1">
   </form>
 {% endblock %}

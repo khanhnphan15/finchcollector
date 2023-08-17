@@ -3,7 +3,7 @@
 {% block content %}
   <!-- New if/else block -->
   {% if object %}
-    <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+    <h1>Edit <span class="#5c6bc0">{{object.name}}</span></h1>
   {% else %}
     <h1>Add Finch</h1>
   {% endif %}
@@ -15,6 +15,6 @@
       <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!" class="btn">
+    <input type="submit" value="Submit!" class="waves-effect waves-light btn indigo lighten-1">
   </form>
 {% endblock %}

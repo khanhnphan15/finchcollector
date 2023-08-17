@@ -4,9 +4,9 @@
 <h1>Finch Details</h1>
 <div class="row">
   <div class="col s6">
-    <div class="card">
+    <div class="card #e8eaf6 indigo lighten-5">
       <div class="card-content">
-        <span class="card-title">{{ finch.name }}</span>
+        <span class="card-title #e8eaf6 indigo lighten-5">{{ finch.name }}</span>
         <p>Color: {{ finch.color }}</p>
         <p>Breed: {{ finch.breed }}</p>
         <p>Description: {{ finch.description|linebreaks }}</p>
@@ -16,7 +16,7 @@
         <p>Age: Baby</p>
         {% endif %}
       </div>
-      <div class="card-action">
+      <div class="card-action #e8eaf6 indigo lighten-5">
         <a href="{% url 'finches_update' finch.id %}">Edit</a>
         <a href="{% url 'finches_delete' finch.id %}">Delete</a>
       </div>
@@ -27,11 +27,11 @@
       {% csrf_token %}
       <!-- Render the inputs -->
       {{ feeding_form.as_p }}
-      <input type="submit" class="btn" value="Add Feeding">
+      <input type="submit" class="waves-effect waves-light btn indigo lighten-1" value="Add Feeding">
     </form>
     <br>
     {% if finch.fed_for_today %}
-      <div class="card-panel teal-text center-align">{{finch.name}} has been fed all meals for today</div>
+      <div class="card-panel #e8eaf6 indigo lighten-5 center-align">{{finch.name}} has been fed all meals for today</div>
     {% else %}
       <div class="card-panel red-text center-align">{{finch.name}} might be hungry</div>
     {% endif %}
@@ -60,7 +60,7 @@
     <h3>{{ finch.name }}'s Toys</h3>
     {% if finch.toys.count %}
       {% for toy in finch.toys.all %}
-        <div class="card">
+        <div class="card #e8eaf6 indigo lighten-5">
           <div class="card-content">
             <span class="card-title">
               A <span style="color: {{ toy.color }}">{{ toy.color }}</span> {{ toy.name }}
@@ -69,7 +69,7 @@
           <div class="card-action">
             <form action="{% url 'unassoc_toy' finch.id toy.id %}" method="POST">
               {% csrf_token %}
-              <button type="submit" class="btn">Remove</button>
+              <button type="submit" class="waves-effect waves-light btn indigo lighten-1">Remove</button>
             </form>
           </div>
         </div>
@@ -83,7 +83,7 @@
     <h3>Available Toys</h3>
     {% if toys.count %}
       {% for toy in toys.all %}
-        <div class="card">
+        <div class="card #e8eaf6 indigo lighten-5">
           <div class="card-content">
             <span class="card-title">
               A <span style="color: {{ toy.color }}">{{ toy.color }}</span> {{ toy.name }}
@@ -92,7 +92,7 @@
           <div class="card-action">
             <form action="{% url 'assoc_toy' finch.id toy.id %}" method="POST">
               {% csrf_token %}
-              <button type="submit" class="btn">Add</button>
+              <button type="submit" class="waves-effect waves-light btn indigo lighten-1">Add</button>
             </form>
           </div>
         </div>
